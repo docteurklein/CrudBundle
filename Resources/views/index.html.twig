@@ -1,0 +1,46 @@
+{% extends base_layout %}
+
+{% block docteurklein_crud_body %}
+
+<form class="form crud-search" method="GET" action="{{ link_href(data, 'self') }}">
+    <label for="search">{{ 'search'|trans }}</label>
+    <input type="search" name="search" value="{{ app.request.query.get('search') }}" />
+    <input type="submit" value="{{ 'search'|trans }}" />
+</form>
+
+<a class="btn btn-success" href="{{ link_href(collection, 'new') }}">
+    <span>{{ 'new'|trans }}</span>
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            {% for property in resource_properties(class) %}
+                <th>{{ property }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for resource in resources %}
+        <tr>
+            {% for value in resource_values(resource) %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            <td>
+                {% for link in links(resource) %}
+                    <a href="{{ link.href }}">{{ link.rel|trans }}</a>
+                {% endfor %}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="{{ resource_properties(class)|length + 1 }}">
+            {{ 'no result'|trans}}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

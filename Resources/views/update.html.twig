@@ -1,0 +1,9 @@
+{% extends base_layout %}
+
+{% block docteurklein_crud_body %}
+
+<a class="btn" href="{{ link_href(data.vars.value, 'index') }}">{{ 'index'|trans }}</a>
+
+{{ form(data) }}
+
+{% endblock %}

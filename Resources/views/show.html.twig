@@ -1,0 +1,35 @@
+{% extends base_layout %}
+
+{% block docteurklein_crud_body %}
+
+<a class="button-back" href="{{ link_href(data, 'index') }}">
+    <span>{{ 'list'|trans }}</span>
+</a>
+
+<div class="table-global">
+
+    <table class="table-accordion-action">
+        <thead>
+            <tr>
+                {% for property in resource_properties(resource) %}
+                    <th>{{ property }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="head-row">
+                {% for property in resource_properties(resource) %}
+                    <td>{{ attribute(resource, property) }}</td>
+                {% endfor %}
+                <td>
+                    {% for link in links(resource) %}
+                        <a href="{{ link.href }}">{{ link.rel|trans }}</a>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

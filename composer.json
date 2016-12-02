@@ -1,0 +1,30 @@
+{
+    "name": "docteurklein/crud-bundle",
+    "type": "symfony-bundle",
+    "description": "FOSRest-ready CRUD",
+    "keywords": ["rest", "hal", "crud"],
+    "homepage": "http://knplabs.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florian Klein",
+            "email": "florian.klein@free.fr"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "willdurand/hateoas": "^2.0",
+        "friendsofsymfony/rest-bundle": "^2.0",
+        "beberlei/porpaginas": "dev-from-result",
+        "doctrine/common": "^2.0"
+    },
+    "autoload": {
+        "psr-4": { "DocteurKlein\\Bundle\\CrudBundle\\": "" }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/docteurklein/porpaginas.git"
+        }
+    ]
+}

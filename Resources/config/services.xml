@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="docteurklein.crud.controller" class="DocteurKlein\Bundle\CrudBundle\Controller\CrudController">
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="fos_rest.view_handler" />
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="router" />
+        </service>
+        <service id="docteurklein.crud.twig.extension.hateoas" class="DocteurKlein\Bundle\CrudBundle\Twig\Extension\Hateoas">
+            <argument type="service" id="hateoas.link_factory" />
+            <argument type="service" id="hateoas.configuration.relations_repository" />
+            <tag name="twig.extension" />
+        </service>
+        <service id="docteurklein.crud.twig.extension.resource" class="DocteurKlein\Bundle\CrudBundle\Twig\Extension\Resource">
+            <argument type="service" id="jms_serializer" />
+            <tag name="twig.extension" />
+        </service>
+        <service id="docteurklein.crud.routing.loader" class="DocteurKlein\Bundle\CrudBundle\Routing\Loader">
+            <tag name="routing.loader" />
+        </service>
+        <service id="docteurklein.crud.form.type.auto" class="DocteurKlein\Bundle\CrudBundle\Form\Type\Auto">
+            <argument type="service" id="docteurklein.crud.twig.extension.resource" />
+            <tag name="form.type" />
+        </service>
+    </services>
+</container>
